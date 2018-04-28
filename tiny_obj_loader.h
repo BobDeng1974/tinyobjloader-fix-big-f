@@ -1811,6 +1811,11 @@ bool LoadObj(attrib_t *attrib, std::vector<shape_t> *shapes,
 
       while (!IS_NEW_LINE(token[0])) {
         vertex_index_t vi;
+			
+			//not a number, skip it and parse another token
+			if(token[0] < '0' || token[0] > '9')
+				break;
+			
         if (!parseTriple(&token, static_cast<int>(v.size() / 3),
                          static_cast<int>(vn.size() / 3),
                          static_cast<int>(vt.size() / 2), &vi)) {
